@@ -54,4 +54,4 @@ ConvLSTM, which combines convolutional layers with LSTM cells, and CNN-RNN are s
     
     - **`Step 5.3:` Plot Model’s Loss & Accuracy Curves**
     
-- **`Step 6:` Test the Best Performing Model on YouTube videos**
+- **`Step 6:` Test the model on YouTube videos**
