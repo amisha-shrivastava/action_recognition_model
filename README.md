@@ -11,12 +11,12 @@ Action recognition in videos is valuable for various reasons across different fi
 5. **Video Summarization**: In summarizing lengthy videos, recognizing atomic actions helps in identifying key moments. For example, in a video feed from an elderly person's home, summarizing moments of "falling" or "trouble walking" could provide useful insights for caregivers without them having to watch hours of footage.
 
 ## Long-term Recurrent Convolutional Networks (LRCN)
-In 2016 a group of authors suggested end-to-end trainable class of architectures for visual recognition and description. The main idea is to use a combination of CNNs to learn visual features from video frames and LSTMs to transform a sequence of image embeddings into a class label, sentence, probabilities, or whatever you need. Thus, raw visual input is processed with a CNN, whose outputs are fed into a stack of recurrent sequence models.
+In 2015 a group of authors suggested end-to-end trainable class of architectures for visual recognition and description. The main idea is to use a combination of CNNs to learn visual features from video frames and LSTMs to transform a sequence of image embeddings into a class label, sentence, probabilities, or whatever you need. Thus, raw visual input is processed with a CNN, whose outputs are fed into a stack of recurrent sequence models.
 <center>
 <img src='https://drive.google.com/uc?export=download&id=1I-q5yLsIoNh2chfzT7JYvra17FsXvdme'>
 </center>
 
-###Fundamental properties of a Long-term Recurrent Convolutional Network (LRCN) model:
+### Fundamental properties of a Long-term Recurrent Convolutional Network (LRCN) model:
 
 1. **Convolutional Layers (CNN)**: Extract spatial features from individual frames/images.
 2. **Recurrent Layers (LSTM)**: Capture temporal dependencies across frames in videos or sequences.
@@ -26,14 +26,14 @@ In 2016 a group of authors suggested end-to-end trainable class of architectures
 5. **Loss Function**: Measures the difference between predicted and actual outputs, tailored to the specific task (e.g., classification, regression).
 6. **Output Layer**: Tailored to the specific task, utilizes activation functions like softmax (for classification) or linear (for regression) for accurate predictions.
 
-Using a single integrated model (such as LRCN, which combines CNN and LSTM layers) instead of two separate models (for example, a CNN for spatial features and an LSTM for temporal sequences) offers several advantages:
+You can read the paper [Long-term Recurrent Convolutional Networks for Visual Recognition and Description](https://arxiv.org/abs/1411.4389?source=post_page---------------------------) by Jeff Donahue (CVPR 2015), to learn more about this architecture.
 
-**Reduced Complexity**: A single integrated model often has a simpler architecture compared to the combination of two separate models. This can lead to a reduction in computational complexity, making the training and inference processes more efficient and easier to manage.<br>
+## Comparision with other Models
 
-**End-to-End Learning**: A single integrated model can learn both spatial and temporal features in an end-to-end manner. This means the model can automatically learn to extract relevant spatial patterns and understand the temporal relationships within the data without the need for manual feature engineering or explicit separation of spatial and temporal processing stages.<br>
+ConvLSTM, which combines convolutional layers with LSTM cells, and CNN-RNN are some of the models that can be used for recognizing actions performed in a video. But here, we will implement another approach known as the Long-term Recurrent Convolutional Network (LRCN), which combines CNN and LSTM layers in a single model. The Convolutional layers are used for spatial feature extraction from the frames, and the extracted spatial features are fed to LSTM layer(s) at each time-steps for temporal sequence modeling. This way the network learns spatiotemporal features directly in an end-to-end training, resulting in a robust model.
 
-**Joint Optimization**: Training a single model allows for joint optimization of both spatial and temporal components. The model's parameters are optimized together, ensuring that spatial and temporal representations are learned in a way that complements each other, potentially leading to a more effective and coherent representation of the data.<br>
-
-**Feature Integration**: An integrated model can effectively integrate spatial and temporal features. The model learns to correlate spatial patterns with their temporal evolution, capturing complex spatiotemporal patterns that might be missed when processing spatial and temporal features independently in two separate models.<br>
-
-**Easier Deployment**: Deploying a single model is often more straightforward than managing the deployment of two separate models. Having a unified model simplifies the deployment process, making it easier to integrate the model into real-world applications.
+1. **Unified Integration**: LRCN seamlessly integrates both spatial (via convolutional layers) and temporal (via recurrent layers) features, allowing it to learn complex patterns in both dimensions simultaneously.
+2. **Simpler Architecture**: LRCN often has a simpler architecture compared to more complex models like ConvLSTM, making it easier to implement, train, and experiment with, especially in scenarios with limited computational resources.
+3. **Ease of Implementation**: Due to its straightforward architecture, LRCN is easier to understand, implement, and troubleshoot, which can lead to faster development and iteration during the model-building process.
+4. **Efficient Learning**: LRCN's design allows it to efficiently capture both short-term and long-term dependencies in sequential data, striking a balance between capturing intricate details and understanding broader contextual patterns.
+5. **Enhanced Performance**: In tasks where understanding the interplay between spatial and temporal features is crucial, LRCN often outperforms models that address these aspects separately, leading to more accurate action recognition results.
