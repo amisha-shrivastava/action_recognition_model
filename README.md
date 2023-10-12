@@ -30,10 +30,28 @@ You can read the paper [Long-term Recurrent Convolutional Networks for Visual Re
 
 ## Comparision with other Models
 
-ConvLSTM, which combines convolutional layers with LSTM cells, and CNN-RNN are some of the models that can be used for recognizing actions performed in a video. But here, we will implement another approach known as the Long-term Recurrent Convolutional Network (LRCN), which combines CNN and LSTM layers in a single model. The Convolutional layers are used for spatial feature extraction from the frames, and the extracted spatial features are fed to LSTM layer(s) at each time-steps for temporal sequence modeling. This way the network learns spatiotemporal features directly in an end-to-end training, resulting in a robust model.
+ConvLSTM, which combines convolutional layers with LSTM cells, and CNN-RNN are some of the models that can be used for recognizing actions performed in a video. But here, we will implement another approach known as the Long-term Recurrent Convolutional Network (LRCN) due to the following reasons:
 
 1. **Unified Integration**: LRCN seamlessly integrates both spatial (via convolutional layers) and temporal (via recurrent layers) features, allowing it to learn complex patterns in both dimensions simultaneously.
 2. **Simpler Architecture**: LRCN often has a simpler architecture compared to more complex models like ConvLSTM, making it easier to implement, train, and experiment with, especially in scenarios with limited computational resources.
 3. **Ease of Implementation**: Due to its straightforward architecture, LRCN is easier to understand, implement, and troubleshoot, which can lead to faster development and iteration during the model-building process.
 4. **Efficient Learning**: LRCN's design allows it to efficiently capture both short-term and long-term dependencies in sequential data, striking a balance between capturing intricate details and understanding broader contextual patterns.
 5. **Enhanced Performance**: In tasks where understanding the interplay between spatial and temporal features is crucial, LRCN often outperforms models that address these aspects separately, leading to more accurate action recognition results.
+
+## Process of creating model
+
+- **`Step 1:` Visualize the Data with its Labels**
+
+- **`Step 2:` Preprocess the Dataset**
+
+- **`Step 3:` Split the Data into Train and Test Set**
+
+- **`Step 4:` Implement the LRCN Approach**
+ 
+    - **`Step 5.1:` Construct the Model**
+    
+    - **`Step 5.2:` Compile & Train the Model**
+    
+    - **`Step 5.3:` Plot Model’s Loss & Accuracy Curves**
+    
+- **`Step 6:` Test the Best Performing Model on YouTube videos**
